@@ -1,0 +1,2 @@
+[console_scripts]
+authz = authz.__main__:main
