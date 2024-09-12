@@ -1,0 +1,5 @@
+if [[ ! $@ ]]; then
+    python3 -m authz -h
+else
+    python3 -m authz $@
+fi
