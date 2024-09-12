@@ -1,0 +1,2 @@
+[console_scripts]
+vauth = vauth.__main__:main

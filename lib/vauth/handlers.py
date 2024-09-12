@@ -7,7 +7,8 @@ logging.basicConfig(
 
 
 class ErrorHandler(object):
-    def __init__(self, default_error_message=">>AUTHz ERROR"):
+
+    def __init__(self, default_error_message=">>vAUTH ERROR"):
         self.default_error_message = default_error_message
         self.error_codes = {
             100: ">>LOGIN FAILED",

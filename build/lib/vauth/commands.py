@@ -1,6 +1,6 @@
-from authz.database import Database as db
-from authz.handlers import ErrorHandler
-from authz.encryption import Encryption as enc
+from vauth.database import Database as db
+from vauth.handlers import ErrorHandler
+from vauth.encryption import Encryption as enc
 import pyotp
 import datetime
 from qrcode.main import QRCode
@@ -10,8 +10,8 @@ import getpass
 
 class Commands:
     """
-    Authz Commands Class.
-    - Handles all the commands for Authz.
+    vAUTH Commands Class.
+    - Handles all the commands for vAUTH.
 
     Attributes:
         db (Database): Database Object.
@@ -32,7 +32,7 @@ class Commands:
     @ErrorHandler()
     def login(self, user_id: str) -> str:
         """
-        Initiate login to Authz.
+        Initiate login to vAUTH.
 
         Args:
             user_id (str): User ID
@@ -43,7 +43,7 @@ class Commands:
         Raises:
             Exception: 100 - Invalid Password
         """
-        key = getpass.getpass("AUTHz> Enter Password: ")
+        key = getpass.getpass("vAUTH> Enter Password: ")
         auth_data = self.db.find_auth(user_id, self.enc.hash_key(key.encode()))
         if auth_data:
             return key
@@ -52,7 +52,7 @@ class Commands:
     @ErrorHandler()
     def register(self, user_id: str) -> tuple:
         """
-        Register a new user to Authz.
+        Register a new user to vAUTH.
         - Create a new password.
         - Store the password hash.
         - Generate recovery codes.
@@ -66,8 +66,8 @@ class Commands:
         Raises:
             Exception: 108 - Passwords do not match
         """
-        key_1 = getpass.getpass("AUTHz> Create a Password: ")
-        key_2 = getpass.getpass("AUTHz> Confirm Password: ")
+        key_1 = getpass.getpass("vAUTH> Create a Password: ")
+        key_2 = getpass.getpass("vAUTH> Confirm Password: ")
         if key_1 != key_2:
             raise Exception(108)
         recovery_codes = self.enc.generate_recovery_codes()
@@ -100,10 +100,10 @@ class Commands:
             Exception: 101 - Invalid Recovery Code
             Exception: 108 - Passwords do not match
         """
-        recovery_code = getpass.getpass("AUTHz> Enter Recovery Code: ")
+        recovery_code = getpass.getpass("vAUTH> Enter Recovery Code: ")
         if self.db.find_recovery_code(user_id, recovery_code):
-            key_1 = getpass.getpass("AUTHz> Create a New Password: ")
-            key_2 = getpass.getpass("AUTHz> Confirm New Password: ")
+            key_1 = getpass.getpass("vAUTH> Create a New Password: ")
+            key_2 = getpass.getpass("vAUTH> Confirm New Password: ")
             if key_1 != key_2:
                 raise Exception(108)
             self.db.update_key(user_id, self.enc.hash_key(key_1.encode()))
@@ -113,7 +113,7 @@ class Commands:
     @ErrorHandler()
     def remove_user(self, user_id: str) -> None:
         """
-        Remove a user from Authz.
+        Remove a user from vAUTH.
         - Check if the user is authenticated.
         - Delete the user's data.
 
@@ -127,7 +127,7 @@ class Commands:
         Raises:
             Exception: 102 - Invalid Password
         """
-        key = getpass.getpass("AUTHz> Enter Password: ")
+        key = getpass.getpass("vAUTH> Enter Password: ")
         if self.db.find_auth(user_id, self.enc.hash_key(key.encode())):
             self.db.delete_auth(user_id)
             print(f">>USER {user_id} REMOVED")

@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
-Name: authz
+Name: vauth
 Version: 0.0.1
 Summary: A simple 2-factor-authentication client
-Home-page: https://github.com/theofficialvedantjoshi/authZ
+Home-page: https://github.com/theofficialvedantjoshi/vAUTH
 Author: Vedant Joshi
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License

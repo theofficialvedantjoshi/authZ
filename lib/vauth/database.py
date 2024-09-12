@@ -51,9 +51,9 @@ class Database:
         key: str
         recovery_codes: list
 
-    def __init__(self, path=os.path.join(os.path.expanduser("~"), ".authz")) -> None:
+    def __init__(self, path=os.path.join(os.path.expanduser("~"), ".vauth")) -> None:
         os.makedirs(path, exist_ok=True)
-        self.connection = sqlite3.connect(os.path.join(path, "authz.db"))
+        self.connection = sqlite3.connect(os.path.join(path, "vauth.db"))
         self.cursor = self.connection.cursor()
         self.service_table = "services"
         self.auth_table = "auth"

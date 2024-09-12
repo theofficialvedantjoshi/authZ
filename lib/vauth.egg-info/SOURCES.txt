@@ -1,0 +1,14 @@
+setup.py
+./scripts/vauth
+lib/vauth/__init__.py
+lib/vauth/__main__.py
+lib/vauth/commands.py
+lib/vauth/database.py
+lib/vauth/encryption.py
+lib/vauth/handlers.py
+lib/vauth.egg-info/PKG-INFO
+lib/vauth.egg-info/SOURCES.txt
+lib/vauth.egg-info/dependency_links.txt
+lib/vauth.egg-info/entry_points.txt
+lib/vauth.egg-info/requires.txt
+lib/vauth.egg-info/top_level.txt

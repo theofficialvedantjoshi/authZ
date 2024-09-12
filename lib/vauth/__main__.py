@@ -1,5 +1,5 @@
 import argparse
-from authz.commands import Commands
+from vauth.commands import Commands
 import time
 import os
 import keyboard
@@ -7,9 +7,9 @@ import cmd
 import threading
 
 
-class AuthzShell(cmd.Cmd):
+class VAuthShell(cmd.Cmd):
     """
-    AUTHz Shell
+    vAUTH Shell
 
     Parameters
     ----------
@@ -20,18 +20,19 @@ class AuthzShell(cmd.Cmd):
     """
 
     intro = r""" 
-$$$$$$\  $$\   $$\ $$$$$$$$\ $$\   $$\           
-$$  __$$\ $$ |  $$ |\__$$  __|$$ |  $$ |          
-$$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |$$$$$$$$\ 
-$$$$$$$$ |$$ |  $$ |   $$ |   $$$$$$$$ |\____$$  |
-$$  __$$ |$$ |  $$ |   $$ |   $$  __$$ |  $$$$ _/ 
-$$ |  $$ |$$ |  $$ |   $$ |   $$ |  $$ | $$  _/   
-$$ |  $$ |\$$$$$$  |   $$ |   $$ |  $$ |$$$$$$$$\ 
-\__|  \__| \______/    \__|   \__|  \__|\________|
-
-Welcome to AUTHz CLI TOOL v1.0. Enter q to quit at any time.
+            $$$$$$\  $$\   $$\ $$$$$$$$\ $$\   $$\ 
+           $$  __$$\ $$ |  $$ |\__$$  __|$$ |  $$ |
+$$\    $$\ $$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
+\$$\  $$  |$$$$$$$$ |$$ |  $$ |   $$ |   $$$$$$$$ |
+ \$$\$$  / $$  __$$ |$$ |  $$ |   $$ |   $$  __$$ |
+  \$$$  /  $$ |  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
+   \$  /   $$ |  $$ |\$$$$$$  |   $$ |   $$ |  $$ |
+    \_/    \__|  \__| \______/    \__|   \__|  \__|
+                                                   
+                                                                                     
+Welcome to vAUTH CLI TOOL v1.0. Enter q to quit at any time.
     """
-    prompt = "AUTHz> "
+    prompt = "vAUTH> "
 
     def __init__(self, user_id, key):
         super().__init__()
@@ -139,7 +140,7 @@ Welcome to AUTHz CLI TOOL v1.0. Enter q to quit at any time.
 
     def do_q(self, args):
         """
-        Quit AUTHz.
+        Quit vAUTH.
         """
         return True
 
@@ -155,7 +156,7 @@ def main():
     Main function
     """
     parser = argparse.ArgumentParser(
-        description="AUTHz CLI TOOL",
+        description="vAUTH CLI TOOL",
         formatter_class=argparse.RawTextHelpFormatter,
     )
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
@@ -163,7 +164,7 @@ def main():
     register_parser = subparsers.add_parser("register", help="Register a new user")
     register_parser.add_argument("-u", required=True, help="User ID to register")
 
-    login_parser = subparsers.add_parser("login", help="Login to AUTHz")
+    login_parser = subparsers.add_parser("login", help="Login to vAUTH")
     login_parser.add_argument(
         "-u",
         required=True,
@@ -190,14 +191,14 @@ def main():
 
     if args.command == "register":
         recovery_codes = cmd.register(args.u)
-        print(f"AUTHz> Registration Successful \nRecovery Codes: {recovery_codes}")
+        print(f"vAUTH> Registration Successful \nRecovery Codes: {recovery_codes}")
     elif args.command == "login":
         key = cmd.login(args.u)
-        shell = AuthzShell(args.u, key)
+        shell = VAuthShell(args.u, key)
         shell.cmdloop()
     elif args.command == "recover":
         _key = cmd.recover(args.u)
-        print(f"AUTHz> Account recovered successfully")
+        print(f"vAUTH> Account recovered successfully")
     elif args.command == "remove":
         cmd.remove_user(args.u)
     else:
