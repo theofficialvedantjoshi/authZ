@@ -12,3 +12,4 @@ lib/vauth.egg-info/dependency_links.txt
 lib/vauth.egg-info/entry_points.txt
 lib/vauth.egg-info/requires.txt
 lib/vauth.egg-info/top_level.txt
+scripts/vauth

@@ -9,7 +9,7 @@ setup(
     packages=find_packages("lib"),
     package_dir={"": "lib"},
     include_package_data=True,
-    install_requires=["pyotp", "qrcode", "cryptography"],
+    install_requires=["pyotp", "qrcode", "cryptography", "keyboard"],
     entry_points={"console_scripts": ["vauth = vauth.__main__:main"]},
     url="https://github.com/theofficialvedantjoshi/vAUTH",
     classifiers=[
