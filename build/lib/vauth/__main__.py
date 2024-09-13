@@ -31,7 +31,7 @@ $$\    $$\ $$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
     \_/    \__|  \__| \______/    \__|   \__|  \__|
                                                    
                                                                                      
-Welcome to vAUTH CLI TOOL v0.0.1. Enter q to quit at any time.
+Welcome to vAUTH CLI TOOL v0.0.3. Enter q to quit at any time.
     """
     prompt = "vAUTH> "
 
