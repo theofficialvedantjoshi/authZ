@@ -1,8 +1,9 @@
-from cryptography.fernet import Fernet
-import hashlib
-from typing import TypedDict
-import secrets
 import base64
+import hashlib
+import secrets
+from typing import TypedDict
+
+from cryptography.fernet import Fernet
 
 
 class Encryption:

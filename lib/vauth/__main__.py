@@ -1,10 +1,11 @@
 import argparse
-from vauth.commands import Commands
-import time
-import os
-import keyboard
 import cmd
+import os
 import threading
+import time
+
+import keyboard
+from vauth.commands import Commands
 
 
 class VAuthShell(cmd.Cmd):

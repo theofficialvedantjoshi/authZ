@@ -6,6 +6,8 @@ setup(
     scripts=["./scripts/vauth"],
     author="Vedant Joshi",
     description="A simple 2-factor-authentication client",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
     packages=find_packages("lib"),
     package_dir={"": "lib"},
     include_package_data=True,

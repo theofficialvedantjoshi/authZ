@@ -1,7 +1,7 @@
+import json
+import os
 import sqlite3
 from typing import TypedDict
-import os
-import json
 
 
 class Database:
