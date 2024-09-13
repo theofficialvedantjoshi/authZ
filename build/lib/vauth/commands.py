@@ -1,11 +1,12 @@
-from vauth.database import Database as db
-from vauth.handlers import ErrorHandler
-from vauth.encryption import Encryption as enc
-import pyotp
-import datetime
-from qrcode.main import QRCode
 import base64
+import datetime
 import getpass
+
+import pyotp
+from qrcode.main import QRCode
+from vauth.database import Database as db
+from vauth.encryption import Encryption as enc
+from vauth.handlers import ErrorHandler
 
 
 class Commands:

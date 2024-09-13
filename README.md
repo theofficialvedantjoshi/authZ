@@ -1,6 +1,6 @@
 # vAUTH
 
-**vAUTH** v1.0! This 2FA command-line tool is designed to help you manage your accounts and services through Time-based One-Time Passwords (TOTP). You can register, login, recover accounts, and manage services with ease. It also includes a built-in shell to interact with your services securely and efficiently.
+**vAUTH** v0.0.1! This 2FA command-line tool is designed to help you manage your accounts and services through Time-based One-Time Passwords (TOTP). You can register, login, recover accounts, and manage services with ease. It also includes a built-in shell to interact with your services securely and efficiently.
 
 ## Table of Contents
 

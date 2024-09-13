@@ -1,10 +1,11 @@
 import argparse
-from vauth.commands import Commands
-import time
-import os
-import keyboard
 import cmd
+import os
 import threading
+import time
+
+import keyboard
+from vauth.commands import Commands
 
 
 class VAuthShell(cmd.Cmd):
@@ -30,7 +31,7 @@ $$\    $$\ $$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
     \_/    \__|  \__| \______/    \__|   \__|  \__|
                                                    
                                                                                      
-Welcome to vAUTH CLI TOOL v1.0. Enter q to quit at any time.
+Welcome to vAUTH CLI TOOL v0.0.1. Enter q to quit at any time.
     """
     prompt = "vAUTH> "
 
