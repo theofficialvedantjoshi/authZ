@@ -31,7 +31,7 @@ $$\    $$\ $$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
     \_/    \__|  \__| \______/    \__|   \__|  \__|
                                                    
                                                                                      
-Welcome to vAUTH CLI TOOL v0.0.3. Enter q to quit at any time.
+Welcome to vAUTH CLI TOOL v0.0.4. Enter q to quit at any time.
     """
     prompt = "vAUTH> "
 
@@ -195,6 +195,8 @@ def main():
         print(f"vAUTH> Registration Successful \nRecovery Codes: {recovery_codes}")
     elif args.command == "login":
         key = cmd.login(args.u)
+        if key is None:
+            return
         shell = VAuthShell(args.u, key)
         shell.cmdloop()
     elif args.command == "recover":
