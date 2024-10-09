@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="vauth",
-    version="0.0.5",
+    version="0.0.6",
     scripts=["./scripts/vauth"],
     author="Vedant Joshi",
     description="A simple 2-factor-authentication client",

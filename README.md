@@ -1,6 +1,6 @@
 # vAUTH
 
-**vAUTH** v0.0.5! This 2FA command-line tool is designed to help you manage your accounts and services through Time-based One-Time Passwords (TOTP). You can register, login, recover accounts, and manage services with ease. It also includes a built-in shell to interact with your services securely and efficiently.
+**vAUTH** v0.0.6! This 2FA command-line tool is designed to help you manage your accounts and services through Time-based One-Time Passwords (TOTP). You can register, login, recover accounts, and manage services with ease. It also includes a built-in shell to interact with your services securely and efficiently.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@
     - [Show QR Code](#show-qr-code)
     - [Remove Service](#remove-service)
     - [Modify Service](#modify-service)
-    - [Quit](#quit)
+    - [Exit](#exit)
 - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [License](#license)
 
@@ -100,14 +100,14 @@ Adds a new service with the specified username and seed.
 show_service <service> <username>
 ```
 
-Displays the current OTP for the service along with the time remaining. It will also continuously update the OTP every 30 seconds until you press 'q' to quit. Here's how the output will look:
+Displays the current OTP for the service along with the time remaining. It will also continuously update the OTP every 30 seconds until you press 'ESC' to quit. Here's how the output will look:
 
 ```bash
 Service: <service_name>
 Username: <username>
 OTP: <current_otp>
 █████████████████████████████░░27s
-Press 'q' to quit
+Press 'ESC' to quit
 ```
 
 #### Show QR Code
@@ -134,17 +134,17 @@ modify_service <service> <username> <'username'/'seed'> <new_value>
 
 Allows you to modify either the username or the seed of a service. You can specify whether you want to update the `username` or the `seed` and provide the new value.
 
-#### Quit
+#### Exit
 
-You can quit the shell at any time by entering:
+You can exit the shell at any time by entering:
 
 ```bash
-q
+exit
 ```
 
 ### Keyboard Shortcuts
 
-- **q**: Quit the OTP display or exit the shell.
+- **ESC**: Quit the OTP display.
 
 ## Example Session
 
@@ -182,7 +182,7 @@ Here's a sample session of how the tool works:
        \_/    \__|  \__| \______/    \__|   \__|  \__|
 
 
-   Welcome to vAUTH CLI TOOL v0.0.5. Enter q to quit at any time.
+   Welcome to vAUTH CLI TOOL v0.0.6. Enter 'exit' to exit at any time.
    ```
 
 3. **Add a Service:**
@@ -204,13 +204,13 @@ Here's a sample session of how the tool works:
    Username: user123
    OTP: 123456
    ████████████████████████████░ 5s
-   Press 'q' to quit
+   Press 'ESC' to quit
    ```
 
-5. **Quit the Shell:**
+5. **Exit the Shell:**
 
    ```bash
-   vAUTH> q
+   vAUTH> exit
    ```
 
 ## License
