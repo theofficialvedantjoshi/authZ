@@ -31,7 +31,7 @@ $$\    $$\ $$ /  $$ |$$ |  $$ |   $$ |   $$ |  $$ |
     \_/    \__|  \__| \______/    \__|   \__|  \__|
                                                    
                                                                                      
-Welcome to vAUTH CLI TOOL v0.0.4. Enter q to quit at any time.
+Welcome to vAUTH CLI TOOL v0.0.5. Enter q to quit at any time.
     """
     prompt = "vAUTH> "
 
@@ -44,7 +44,7 @@ Welcome to vAUTH CLI TOOL v0.0.4. Enter q to quit at any time.
 
     def check_quit_show_service(self):
         while True:
-            if keyboard.is_pressed("q"):
+            if keyboard.is_pressed("esc"):
                 self.quit_flag = True
                 break
 
@@ -74,6 +74,7 @@ Welcome to vAUTH CLI TOOL v0.0.4. Enter q to quit at any time.
         service, username = args
         seed = self.cmd.find_seed(self.user_id, self.key, username, service)
         if seed:
+            self.quit_flag = False
             t = threading.Thread(target=self.check_quit_show_service)
             t.start()
             while not self.quit_flag:
@@ -85,14 +86,14 @@ Welcome to vAUTH CLI TOOL v0.0.4. Enter q to quit at any time.
                 print(
                     f"Service: {args[0]}\nUsername: {username}\nOTP: {otp}\n{progress} {remaining}s"
                 )
-                print("Press 'q' to quit")
-                if keyboard.is_pressed("q"):
-                    break
+                print("Press 'ESC' to quit")
                 time.sleep(1)
                 remaining -= 1
                 if remaining == 0:
                     remaining = 30
             t.join()
+            os.system("cls" if os.name == "nt" else "clear")
+            return
 
     def do_show_qr(self, args):
         """
@@ -139,11 +140,17 @@ Welcome to vAUTH CLI TOOL v0.0.4. Enter q to quit at any time.
             self.user_id, self.key, username, service, type, new_value
         )
 
-    def do_q(self, args):
+    def do_exit(self, args):
         """
-        Quit vAUTH.
+        Exit vAUTH.
         """
         return True
+
+    def do_clear(self, args):
+        """
+        Clear the screen.
+        """
+        os.system("cls" if os.name == "nt" else "clear")
 
     def default(self, line: str) -> None:
         """
